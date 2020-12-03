@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pytest
-from aoc.aoc_utils import load_data_as_ints
+from .aoc_utils import load_data_as_ints
 import aoc.day1 as day1
 
 EXAMPLE_DATA = [1721, 979, 366, 299, 675, 1456]

@@ -2,7 +2,7 @@ from pathlib import Path
 
 import aoc.day2 as day2
 import pytest
-from aoc.aoc_utils import load_data
+from .aoc_utils import load_data
 
 EXAMPLE_DATA = ["1-3 a: abcde",
                 "1-3 b: cdefg",
