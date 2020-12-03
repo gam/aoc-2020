@@ -2,11 +2,11 @@
   (:require [clojure.test :refer [deftest testing is run-tests]]
             [clojure.string :refer [split-lines]]))
 
+(def pattern #"^(\d+)-(\d+) (\w+):\s(.+)\s*$")
 (def example-data ["1-3 a: abcde"
                    "1-3 b: cdefg"
                    "2-9 c: ccccccccc"])
 (def day2-data (split-lines (slurp "data/day2.data")))
-(def pattern #"^(\d+)-(\d+) (\w+):\s(.+)\s*$")
 
 (defn- parse-line [line]
   (let [[_ number-1 number-2 character password] (re-matches pattern line)]
@@ -20,17 +20,16 @@
     (and (>= count min)
          (<= count max))))
 
-(defn- nth-chars [indexes string]
-  (map #(nth string (dec %)) indexes))
+(defn- nth-chars [indices string]
+  (map #(nth string (dec %)) indices))
 
-(defn- validate-part2 [[pos-1 pos-2 character password]]
+(defn- validate-part2 [[pos1 pos2 character password]]
   (->> password
-       (nth-chars [pos-1 pos-2])
+       (nth-chars [pos1 pos2])
        (filter (partial = character))
        count
        (= 1)))
     
-
 (defn solve
   "Day2.1: Find number of password(s) compliant with their policy"
   [data validator]
